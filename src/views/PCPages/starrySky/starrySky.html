@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div class="canvas-bg">
+      <canvas id="myCanvas" class="myCanvas"></canvas>
+      <!-- <img src='imgs/star.png' id="myStar" style="display: none;"> -->
+    </div>
+  </body>
+  <style>
+    .canvas-bg {
+      width: 100%;
+      height: 100%;
+      background-color: gray;
+      /* z-index: -1; */
+      background-image: url("./imgs/starrySky.jpg");
+    }
+    /* .myCanvas {
+      width:100%;
+      height: 60%;
+    } */
+  </style>
+  <script>
+    let myCanvas = document.getElementById('myCanvas');
+    myCanvas.width = window.innerWidth;
+    myCanvas.height = window.innerHeight;
+    let ctx = myCanvas.getContext('2d');
+    console.log(ctx);
+    let starImg = new Image(),bgImg= new Image();
+    let starNum = 80,stars=[];
+    let lastTime,deltaTime; //最近一次刷新的时间，两次刷新时间的时间间隔；
+    // let starImg = document.getElementById('myStar');
+    starImg.src = './imgs/star.png';
+    bgImg.src = './imgs/starrySky.jpg';
+    starImg.onload = function() {
+      initPage()
+    }
+    function initPage () {
+      for(let i=0;i<starNum;i++){
+        stars[i] = new Star();
+        stars[i].init();
+      }
+      lastTime = Date.now();
+      loop();
+    }
+
+    let Star = function() {
+      this.x;
+      this.y;
+      this.picNo;
+      this.timer;
+    }
+
+    Star.prototype.init =function() {
+      this.x = Math.random() * window.innerWidth;
+      this.y = Math.random() * window.innerHeight*0.6;
+      this.timer = 0;
+      this.picNo = Math.floor((Math.random() * 7));
+      // this.picNo = 0;
+    }
+
+    Star.prototype.draw =function () {
+      /* 
+        context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+        img	规定要使用的图像、画布或视频。
+        sx	可选。开始剪切的 x 坐标位置。
+        sy	可选。开始剪切的 y 坐标位置。
+        swidth	可选。被剪切图像的宽度。
+        sheight	可选。被剪切图像的高度。
+        x	在画布上放置图像的 x 坐标位置。
+        y	在画布上放置图像的 y 坐标位置。
+        width	可选。要使用的图像的宽度。（伸展或缩小图像）
+        height	可选。要使用的图像的高度。（伸展或缩小图像）
+      */
+      ctx.save();
+      ctx.drawImage(starImg,this.picNo*7, 0, 7, 7, this.x, this.y,7,7);
+      
+      ctx.restore();
+    }
+    Star.prototype.update =function () {
+      this.timer += deltaTime;
+      if(this.timer> 50){
+        this.picNo += 1;
+        this.timer = 0;
+        this.picNo = this.picNo % 7;
+      }
+    }
+    function fillCanvas() {
+      // ctx.fillStyle = "#393550";
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+    function loop() {
+      window.requestAnimFrame(loop);
+
+      let now = Date.now();
+      deltaTime = now - lastTime;
+      lastTime = now;
+
+      fillCanvas();
+      ctx.drawImage(bgImg, 0, 0,window.innerWidth, window.innerHeight);
+      drawStars();
+      
+    }
+    function drawStars() {
+      for(let i=0;i< starNum;i++){
+        stars[i].update();
+        stars[i].draw();
+      }
+    }
+    window.requestAnimFrame = (function() {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
+          return window.setTimeout(callback, 1000 / 60);
+        };
+    })();
+  </script>
+</html>

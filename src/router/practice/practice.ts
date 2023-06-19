@@ -21,27 +21,33 @@ const routers: Array<RouteConfig> = [
     component: () => import("@/views/loadPrdList/index.vue")
   },
   {
-    path: "/skeletonPractice",
-    name: "skeletonPractice",
-    component: () => import("@/views/skeletonPractice/index.vue"),
-    children: [
-      {
-        path: "/skeletonComponent",
-        name: "skeletonComponent",
-        component: () => import("@/views/skeletonPractice/index.vue")
-      },
-      {
-        path: "/skeletonComponent",
-        name: "skeletonComponent",
-        component: () => import("@/views/skeletonPractice/index.vue")
-      }
-    ]
+    path: "/dynamicStyle",
+    name: "dynamicStyle",
+    component: () => import("@/views/phonePage/dynamicStyle.vue")
   },
+  // D:\devFolder\vue2\vue2-project\src\views\phonePage\dynamicStyle.vue
+  // {
+  //   path: "/skeletonPractice",
+  //   name: "skeletonPractice",
+  //   component: () => import("@/views/skeletonPractice/index.vue"),
+  //   children: [
+  //     {
+  //       path: "/skeletonComponent",
+  //       name: "skeletonComponent",
+  //       component: () => import("@/views/skeletonPractice/index.vue")
+  //     },
+  //     {
+  //       path: "/skeletonComponent",
+  //       name: "skeletonComponent",
+  //       component: () => import("@/views/skeletonPractice/index.vue")
+  //     }
+  //   ]
+  // },
   {
     path: "/routerViewPractice",
     name: "routerViewPractice",
     component: () => import("@/views/routerView/index.vue"),
-    redirect: '/messagePage',
+    redirect: "/messagePage",
     children: [
       {
         path: "/messagePage",
@@ -59,6 +65,33 @@ const routers: Array<RouteConfig> = [
         component: () => import("@/views/routerView/childPages/dynamicPage.vue")
       }
     ]
+  },
+  {
+    path: "/sakuraSky",
+    name: "sakuraSky",
+    component: () => import("@/views/PCPages/sakura/sakura.vue")
+  },
+  {
+    path: "/starrySky",
+    name: "starrySky.vue",
+    component: () => import("@/views/PCPages/starrySky/starrySky.vue")
+  },
+  {
+    path: "/starFlutter",
+    name: "starFlutter.vue",
+    component: () => import("@/views/PCPages/starrySky/starFlutter.vue")
+  },
+  // 文件上传
+  {
+    path: "/excelResolve",
+    name: "excelResolve",
+    component: () => import("@/views/PCPages/excelResolve.vue")
+  },
+  // 滚动数字
+  {
+    path: "/scrollNum",
+    name: "scrollNum",
+    component: () => import("@/views/phonePage/scrollNum/index.vue")
   }
 ];
 

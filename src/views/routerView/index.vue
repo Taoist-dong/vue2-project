@@ -3,9 +3,9 @@
     <title-bar :title="title" @goBack="goback"></title-bar>
     <router-view></router-view>
     <BottomBar
-     @handleMsg='handleMsg'
-     @lookContact='lookContact'
-     @readDynamic='readDynamic'
+      @handleMsg="handleMsg"
+      @lookContact="lookContact"
+      @readDynamic="readDynamic"
     ></BottomBar>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      title: "路由视图",
+      title: "路由视图"
     };
   },
   methods: {
@@ -29,13 +29,13 @@ export default {
       // this.$emit("GoBack");
     },
     handleMsg() {
-      this.$router.push({path: '/messagePage'})
+      this.$router.push({ path: "/messagePage" });
     },
     lookContact() {
-      this.$router.push({path: '/contactPage'})
+      this.$router.push({ path: "/contactPage" });
     },
     readDynamic() {
-      this.$router.push({path: '/dynamicPage'})
+      this.$router.push({ path: "/dynamicPage" });
     }
   }
 };

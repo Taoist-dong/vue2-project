@@ -1,16 +1,16 @@
-const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader");
-const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
+// const path = require("path");
+// const { VueLoaderPlugin } = require("vue-loader");
+// const VueSSRServerPlugin = require("vue-server-renderer/server-plugin");
 
 module.exports = {
   // mode: process.env.NODE_ENV,
   target: "node",
-  entry: path.join(__dirname, "./src/skeleton-entry.js"),
-  output: {
-    path: path.join(__dirname, "./dist"),
-    filename: "server.bundle.js",
-    libraryTarget: "commonjs2"
-  },
+  // entry: path.join(__dirname, "./src/skeleton-entry.js"),
+  // output: {
+  //   path: path.join(__dirname, "./dist"),
+  //   filename: "server.bundle.js",
+  //   libraryTarget: "commonjs2"
+  // },
   module: {
     rules: [
       {
@@ -20,6 +20,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["vue-style-loader", "css-loader"]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   },
@@ -28,11 +32,11 @@ module.exports = {
     alias: {
       vue$: "vue/dist/vue.esm.js"
     }
-  },
-  plugins: [
-    new VueLoaderPlugin(),
-    new VueSSRServerPlugin({
-      filename: "skeleton.json"
-    })
-  ]
+  }
+  // plugins: [
+  //   new VueLoaderPlugin(),
+  //   new VueSSRServerPlugin({
+  //     filename: "skeleton.json"
+  //   })
+  // ]
 };

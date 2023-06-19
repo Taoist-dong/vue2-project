@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
 import routers from "./practice/practice";
+import echartsRouters from './practice/echarts'
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -20,7 +21,7 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   }
 ];
-const allRouter = [...routes, ...routers];
+const allRouter = [...routes, ...routers, ...echartsRouters];
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,

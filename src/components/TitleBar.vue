@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .page-title {
   width: 100%;
-  background-color: #fff;
+  // background-color: #fff;
   display: flex;
   padding: 10px 0;
   justify-content: flex-start;

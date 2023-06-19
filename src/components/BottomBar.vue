@@ -1,15 +1,15 @@
 <template>
   <div class="btm-nav-bar">
     <div class="flex-layout">
-      <div class="btm-nav-bar-item" @click='messageClick'>
+      <div class="btm-nav-bar-item" @click="messageClick">
         <img src="@/assets/images/bottomNavBar/message.png" />
         <label>消息</label>
       </div>
-      <div class="btm-nav-bar-item" @click='contactClick'>
+      <div class="btm-nav-bar-item" @click="contactClick">
         <img src="@/assets/images/bottomNavBar/contact.png" />
         <label>联系人</label>
       </div>
-      <div class="btm-nav-bar-item" @click='dynamicClick'>
+      <div class="btm-nav-bar-item" @click="dynamicClick">
         <img src="@/assets/images/bottomNavBar/dynamic.png" />
         <label>动态</label>
       </div>
@@ -40,15 +40,15 @@ export default {
     },
     // 点击消息
     messageClick() {
-      this.$emit('handleMsg')
+      this.$emit("handleMsg");
     },
     // 点击联系人
     contactClick() {
-      this.$emit('lookContact')
+      this.$emit("lookContact");
     },
     // 点击动态
     dynamicClick() {
-      this.$emit('readDynamic')
+      this.$emit("readDynamic");
     }
   }
 };
