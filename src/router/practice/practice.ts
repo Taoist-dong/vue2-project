@@ -82,11 +82,11 @@ const routers: Array<RouteConfig> = [
     component: () => import("@/views/PCPages/starrySky/starFlutter.vue")
   },
   // 文件上传
-  {
-    path: "/excelResolve",
-    name: "excelResolve",
-    component: () => import("@/views/PCPages/excelResolve.vue")
-  },
+  // {
+  //   path: "/excelResolve",
+  //   name: "excelResolve",
+  //   component: () => import("@/views/PCPages/excelResolve.vue")
+  // },
   // 滚动数字
   {
     path: "/scrollNum",
